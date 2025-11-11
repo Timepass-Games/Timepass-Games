@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timepass Games  - Fun Games for Children</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #FF6B8B;
+            --secondary: #6ECBF5;
+            --accent: #FFD166;
+            --light: #F9F7FE;
+            --dark: #2A2D43;
+            --success: #06D6A0;
+            --purple: #A78BFA;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: var(--dark);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding-bottom: 60px;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 1.5rem 1rem;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            position: relative;
+            overflow: hidden;
+            animation: headerSlide 1s ease-out;
+        }
+
+        @keyframes headerSlide {
+            0% { transform: translateY(-100%); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);
+            transform: rotate(30deg);
+            animation: sparkle 8s infinite linear;
+        }
+
+        @keyframes sparkle {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .floating-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .shape {
+            position: absolute;
+            opacity: 0.3;
+            animation: float 15s infinite linear;
+        }
+
+        .circle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--accent);
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .triangle {
+            width: 0;
+            height: 0;
+            border-left: 25px solid transparent;
+            border-right: 25px solid transparent;
+            border-bottom: 40px solid var(--purple);
+            top: 20%;
+            right: 15%;
+            animation-delay: 2s;
+        }
+
+        .square {
+            width: 35px;
+            height: 35px;
+            background: var(--success);
+            top: 70%;
+            left: 15%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+            100% { transform: translateY(0) rotate(360deg); }
+        }
+
+        h1 {
+            font-family: 'Fredoka One', cursive;
+            font-size: 2.5rem;
+            margin-bottom: 0.3rem;
+            text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 1;
+        }
+
+        .subtitle {
+            font-size: 1rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 1.5rem auto;
+            padding: 0 1rem;
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .search-container {
+            max-width: 600px;
+            margin: 0 auto 1.5rem;
+            position: relative;
+            animation: slideIn 0.8s ease-out 0.2s both;
+        }
+
+        @keyframes slideIn {
+            0% { opacity: 0; transform: translateX(-50px); }
+            100% { opacity: 1; transform: translateX(0); }
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            font-family: 'Nunito', sans-serif;
+            background: white;
+            position: relative;
+            z-index: 1;
+        }
+
+        .search-box:focus {
+            outline: none;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            transform: translateY(-3px) scale(1.02);
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary);
+            font-size: 1.2rem;
+            z-index: 2;
+            transition: all 0.3s ease;
+        }
+
+        .search-box:focus + .search-icon {
+            color: var(--secondary);
+            transform: translateY(-50%) scale(1.2);
+        }
+
+        .category-filter {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .category-btn {
+            background: white;
+            border: 2px solid var(--secondary);
+            color: var(--dark);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .category-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .category-btn.active {
+            background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            border-color: transparent;
+        }
+
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 1.2rem;
+        }
+
+        .game-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            position: relative;
+            animation: cardAppear 0.6s ease-out both;
+            animation-delay: calc(var(--delay) * 0.1s);
+        }
+
+        @keyframes cardAppear {
+            0% { opacity: 0; transform: scale(0.8) translateY(30px); }
+            100% { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        .game-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .game-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .game-card:hover {
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .game-icon-container {
+            position: relative;
+            overflow: hidden;
+            height: 140px;
+        }
+
+        .game-icon {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            background: linear-gradient(45deg, var(--light) 0%, #e0e7ff 100%);
+            transition: all 0.5s ease;
+        }
+
+        .game-card:hover .game-icon {
+            transform: scale(1.1);
+        }
+
+        .game-content {
+            padding: 0.8rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            z-index: 1;
+        }
+
+        .game-title {
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--dark);
+            line-height: 1.3;
+            text-align: center;
+            transition: color 0.3s ease;
+            margin-top: 0.3rem;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 2rem;
+            grid-column: 1 / -1;
+            color: var(--dark);
+            font-size: 1.2rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .loading {
+            text-align: center;
+            padding: 2rem;
+            grid-column: 1 / -1;
+            color: var(--dark);
+        }
+
+        .loading-spinner {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(255, 107, 139, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--primary);
+            animation: spin 1s ease-in-out infinite;
+            margin-bottom: 1rem;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background: var(--dark);
+            color: white;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            font-size: 0.8rem;
+            z-index: 10;
+        }
+
+        .bubble {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            animation: bubbleFloat 15s infinite linear;
+            z-index: 0;
+        }
+
+        @keyframes bubbleFloat {
+            0% { transform: translateY(0) translateX(0); opacity: 0; }
+            10% { opacity: 0.5; }
+            90% { opacity: 0.3; }
+            100% { transform: translateY(-100vh) translateX(100px); opacity: 0; }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .games-grid {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+                gap: 1rem;
+            }
+            
+            .game-icon-container {
+                height: 120px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .games-grid {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            }
+            
+            .game-icon-container {
+                height: 100px;
+            }
+            
+            .game-title {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background bubbles -->
+    <div id="bubbles"></div>
+
+    <header>
+        <div class="floating-shapes">
+            <div class="shape circle"></div>
+            <div class="shape triangle"></div>
+            <div class="shape square"></div>
+        </div>
+        <h1>Timepass Games </h1>
+        <p class="subtitle">Discover fun and educational games for children of all ages!</p>
+    </header>
+
+    <div class="container">
+        <div class="search-container">
+            <input type="text" class="search-box" id="searchInput" placeholder="Search for games...">
+            <div class="search-icon">
+                <i class="fas fa-search"></i>
+            </div>
+        </div>
+
+        <div class="category-filter" id="categoryFilter">
+            <!-- Category buttons will be generated here -->
+        </div>
+
+        <div class="games-grid" id="gamesGrid">
+            <div class="loading">
+                <div class="loading-spinner"></div>
+                <p>Loading games...</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Timepass Games  &copy; 2023 | Fun and Safe Games for Children</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const gamesGrid = document.getElementById('gamesGrid');
+            const searchInput = document.getElementById('searchInput');
+            const categoryFilter = document.getElementById('categoryFilter');
+            const bubblesContainer = document.getElementById('bubbles');
+            const csvUrl = 'https://docs.google.com/spreadsheets/d/13gXJWxoHMiKZDX-IssQJ_Nsz9gNQaWfaawYHmYagk5c/export?format=csv';
+            
+            let games = [];
+            let categories = [];
+            let selectedCategory = 'all';
+            
+            // Create background bubbles
+            function createBubbles() {
+                for (let i = 0; i < 20; i++) {
+                    const bubble = document.createElement('div');
+                    bubble.classList.add('bubble');
+                    
+                    const size = Math.random() * 60 + 20;
+                    bubble.style.width = `${size}px`;
+                    bubble.style.height = `${size}px`;
+                    
+                    bubble.style.left = `${Math.random() * 100}vw`;
+                    bubble.style.animationDelay = `${Math.random() * 15}s`;
+                    bubble.style.animationDuration = `${Math.random() * 10 + 15}s`;
+                    
+                    bubblesContainer.appendChild(bubble);
+                }
+            }
+            
+            // Fetch and parse CSV data
+            async function loadGames() {
+                try {
+                    const response = await fetch(csvUrl);
+                    const csvData = await response.text();
+                    
+                    // Parse CSV (simple approach for Name,Icon,Link,Category format)
+                    const lines = csvData.split('\n');
+                    
+                    // Skip header if exists and process each line
+                    for (let i = 1; i < lines.length; i++) {
+                        const line = lines[i].trim();
+                        if (!line) continue;
+                        
+                        // Simple CSV parsing (may need adjustment based on actual CSV format)
+                        const parts = line.split(',');
+                        if (parts.length >= 4) {
+                            const name = parts[0].replace(/"/g, '').trim();
+                            const icon = parts[1].replace(/"/g, '').trim();
+                            const link = parts[2].replace(/"/g, '').trim();
+                            const category = parts[3].replace(/"/g, '').trim();
+                            
+                            if (name && link) {
+                                games.push({ name, icon, link, category });
+                                
+                                // Add category to categories array if not already present
+                                if (category && !categories.includes(category)) {
+                                    categories.push(category);
+                                }
+                            }
+                        }
+                    }
+                    
+                    // Sort categories alphabetically
+                    categories.sort();
+                    
+                    // Create category filter buttons
+                    createCategoryFilters();
+                    
+                    displayGames(games);
+                } catch (error) {
+                    console.error('Error loading games:', error);
+                    gamesGrid.innerHTML = '<div class="no-results">Sorry, we couldn\'t load the games. Please try again later.</div>';
+                }
+            }
+            
+            // Create category filter buttons
+            function createCategoryFilters() {
+                // Add "All" category button
+                const allButton = document.createElement('button');
+                allButton.classList.add('category-btn', 'active');
+                allButton.textContent = 'All Games';
+                allButton.setAttribute('data-category', 'all');
+                allButton.addEventListener('click', function() {
+                    selectedCategory = 'all';
+                    updateCategoryButtons();
+                    filterGames();
+                });
+                categoryFilter.appendChild(allButton);
+                
+                // Add category buttons
+                categories.forEach(category => {
+                    const button = document.createElement('button');
+                    button.classList.add('category-btn');
+                    button.textContent = category;
+                    button.setAttribute('data-category', category);
+                    button.addEventListener('click', function() {
+                        selectedCategory = category;
+                        updateCategoryButtons();
+                        filterGames();
+                    });
+                    categoryFilter.appendChild(button);
+                });
+            }
+            
+            // Update active state of category buttons
+            function updateCategoryButtons() {
+                document.querySelectorAll('.category-btn').forEach(button => {
+                    if (button.getAttribute('data-category') === selectedCategory) {
+                        button.classList.add('active');
+                    } else {
+                        button.classList.remove('active');
+                    }
+                });
+            }
+            
+            // Filter games based on search and category
+            function filterGames() {
+                const searchTerm = searchInput.value.toLowerCase();
+                
+                const filteredGames = games.filter(game => {
+                    const matchesSearch = game.name.toLowerCase().includes(searchTerm);
+                    const matchesCategory = selectedCategory === 'all' || game.category === selectedCategory;
+                    
+                    return matchesSearch && matchesCategory;
+                });
+                
+                displayGames(filteredGames);
+            }
+            
+            // Display games in grid
+            function displayGames(gamesToDisplay) {
+                if (gamesToDisplay.length === 0) {
+                    gamesGrid.innerHTML = '<div class="no-results">No games found. Try a different search or category.</div>';
+                    return;
+                }
+                
+                gamesGrid.innerHTML = gamesToDisplay.map((game, index) => `
+                    <div class="game-card" data-link="${game.link}" style="--delay: ${index};">
+                        <div class="game-icon-container">
+                            <img src="${game.icon || 'https://via.placeholder.com/200x160/6ECBF5/FFFFFF?text=Game'}" 
+                                 alt="${game.name}" class="game-icon" 
+                                 onerror="this.src='https://via.placeholder.com/200x160/6ECBF5/FFFFFF?text=Game'">
+                        </div>
+                        <div class="game-content">
+                            <h3 class="game-title">${game.name}</h3>
+                        </div>
+                    </div>
+                `).join('');
+                
+                // Add click event to game cards
+                document.querySelectorAll('.game-card').forEach(card => {
+                    card.addEventListener('click', function() {
+                        const gameLink = this.getAttribute('data-link');
+                        if (gameLink) {
+                            // Add click animation
+                            this.style.transform = 'scale(0.95)';
+                            setTimeout(() => {
+                                this.style.transform = '';
+                                window.open(gameLink, '_blank');
+                            }, 200);
+                        }
+                    });
+                });
+            }
+            
+            // Search functionality
+            searchInput.addEventListener('input', filterGames);
+            
+            // Initial load
+            createBubbles();
+            loadGames();
+        });
+    </script>
+</body>
+</html>
+<head>
+      <!-- 🌈 Navigation Menu -->
+<nav style="background: rgba(255,255,255,0.2); display:flex; justify-content:center; gap:1rem; padding:0.5rem 0; border-radius:50px; margin:0.8rem auto; max-width:500px; backdrop-filter:blur(10px);">
+  <a href="index.html" style="color:white; text-decoration:none; font-weight:600; padding:0.3rem 0.8rem; border-radius:25px;">Home</a>
+  <a href="about.html" style="color:white; text-decoration:none; font-weight:600; padding:0.3rem 0.8rem; border-radius:25px;">About</a>
+  <a href="contact.html" style="color:white; text-decoration:none; font-weight:600; padding:0.3rem 0.8rem; border-radius:25px;">Contact</a>
+  <a href="privacy.html" style="color:white; text-decoration:none; font-weight:600; padding:0.3rem 0.8rem; border-radius:25px;">Privacy</a>
+</nav>
+
+<footer></footer>
+            <footer style="text-align:center; padding:1rem; background:#2A2D43; color:white; font-size:0.8rem;">
+  <p>
+    Timepass Games  © 2025 |
+    <a href="about.html" style="color:#FFD166; text-decoration:none;">About</a> |
+    <a href="contact.html" style="color:#FFD166; text-decoration:none;">Contact</a> |
+    <a href="privacy.html" style="color:#FFD166; text-decoration:none;">Privacy</a>
+  </p>
+</footer>     
+<head>
+<!-- 🌟 SEO Meta Tags -->
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="author" content="Timepass Games" />
+<meta name="description" content="Play fun and free online games on Timepass Games! Enjoy arcade, puzzle, action and more — all in one place. Simple, fast, and mobile-friendly gaming experience." />
+<meta name="keywords" content="free games, online games, html5 games, browser games, fun games, play now, timepass games, mobile games" />
+<meta name="robots" content="index, follow" />
+<meta name="theme-color" content="#2A2D43" />
+
+<!-- 🏷️ Open Graph (for social sharing) -->
+<meta property="og:title" content="Timepass Games — Play Free Online Games" />
+<meta property="og:description" content="Enjoy the best collection of free HTML5 games that you can play instantly without download. Play anytime, anywhere!" />
+<meta property="og:image" content="https://timepass-games.github.io/Timepass-Games-/assets/thumbnail.jpg" />
+<meta property="og:url" content="https://timepass-games.github.io/Timepass-Games-/" />
+<meta property="og:type" content="website" />
+
+<!-- 🐦 Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Timepass Games — Free HTML5 Games" />
+<meta name="twitter:description" content="Play 100+ online HTML5 games for free on Timepass Games. No downloads, just fun!" />
+<meta name="twitter:image" content="https://timepass-games.github.io/Timepass-Games-/assets/thumbnail.jpg" />
+
+<!-- 🔍 Canonical URL -->
+<link rel="canonical" href="https://timepass-games.github.io/Timepass-Games-/" /></head>
