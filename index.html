@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Timepass Games - Fun Games for Children</title>
+    
+    <meta name="description" content="Play hundreds of free, fun, and fast HTML5 games directly in your browser! Enjoy arcade, puzzle, action, and educational games—all mobile-friendly with no downloads required.">
+    <meta name="keywords" content="free games, online games, html5 games, browser games, fun games, play now, timepass games, mobile games, games for children, arcade games, puzzle games">
+    <meta name="robots" content="index, follow">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
@@ -179,6 +184,37 @@
         @keyframes fadeIn {
             0% { opacity: 0; transform: translateY(20px); }
             100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* New Content Section Styling */
+        .seo-content-block {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+            border-left: 5px solid var(--primary);
+            animation: slideIn 1s ease-out 0.4s both;
+        }
+        
+        .seo-content-block h2 {
+            font-family: 'Fredoka One', cursive;
+            color: var(--dark);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .seo-content-block p {
+            font-size: 1.1rem;
+            color: #444;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            text-align: justify;
+        }
+        
+        .seo-content-block strong {
+            color: var(--primary);
         }
 
         .search-container {
@@ -764,7 +800,6 @@
     </style>
 </head>
 <body>
-    <!-- Background bubbles -->
     <div id="bubbles"></div>
 
     <header>
@@ -778,9 +813,33 @@
         </button>
         <h1>Timepass Games</h1>
         <p class="subtitle">Discover fun and educational games for children of all ages!</p>
+        
+        <nav style="background: rgba(255,255,255,0.2); display:flex; justify-content:center; gap:1rem; padding:0.5rem 0; border-radius:50px; margin:0.8rem auto; max-width:500px; backdrop-filter:blur(10px);">
+            <a href="index.html" style="color:white; text-decoration:none; font-weight:600; padding:0.3rem 0.8rem; border-radius:25px;">Home</a>
+            <a href="about.html" style="color:white; text-decoration:none; font-weight:600; padding:0.3rem 0.8rem; border-radius:25px;">About</a>
+            <a href="contact.html" style="color:white; text-decoration:none; font-weight:600; padding:0.3rem 0.8rem; border-radius:25px;">Contact</a>
+            <a href="privacy.html" style="color:white; text-decoration:none; font-weight:600; padding:0.3rem 0.8rem; border-radius:25px;">Privacy</a>
+        </nav>
     </header>
 
     <div class="container">
+        
+        <section class="seo-content-block">
+            <h2>Welcome to Timepass Games: Your Ultimate Destination for Free Online HTML5 Fun!</h2>
+            <p>
+                Tired of endless downloads, complicated installations, and frustrating software? At **Timepass Games**, we believe instant fun should be the standard. We've curated the web's best collection of free, high-quality **HTML5 games** that you can play directly in your browser. Whether you're using a desktop computer, a tablet, or a mobile phone, our games load quickly and are always **100% free** and accessible. Forget the hassles—just pure, addictive gaming pleasure starts here.
+            </p>
+            <p>
+                Our library is meticulously designed to offer something for everyone. We feature a fantastic selection of **fun games for children** that are both educational and engaging, helping young minds develop skills through play. But the fun doesn't stop there. Adults will also find plenty of challenges in our vast selection of classic **arcade games**, brain-teasing **puzzle games**, and heart-pounding **action games**. From strategy challenges that sharpen your mind to simple, relaxing games for a quick break, Timepass Games is the perfect way to pass the time and discover your next favorite online pastime.
+            </p>
+            <p>
+                We prioritize a **seamless and user-friendly experience**. Our entire platform is **mobile-friendly** and optimized for lightning-fast loading speeds, which means less waiting and more playing, regardless of your device. We are constantly updating our collection, bringing you new and exciting titles across various categories every week. Use the powerful search bar above or filter games by category to quickly find exactly what you're looking for, or simply browse the grid below to stumble upon a delightful new adventure.
+            </p>
+            <p>
+                Your privacy and safety are important to us, which is why we maintain a transparent and secure environment for all our players. We are committed to providing **reliable browser games** that you can trust. Start exploring our vast collection of free online games today and join thousands of players who make Timepass Games their go-to source for instant, high-quality online entertainment. Dive in, find a game, and let the fun begin!
+            </p>
+        </section>
+        
         <div class="search-container">
             <input type="text" class="search-box" id="searchInput" placeholder="Search for games...">
             <div class="search-icon">
@@ -789,8 +848,7 @@
         </div>
 
         <div class="category-filter" id="categoryFilter">
-            <!-- Category buttons will be generated here -->
-        </div>
+            </div>
 
         <div class="games-grid" id="gamesGrid">
             <div class="loading">
@@ -800,7 +858,6 @@
         </div>
     </div>
 
-    <!-- Game Detail Page -->
     <div class="game-detail-page" id="gameDetailPage">
         <div class="game-detail-header">
             <img class="game-detail-logo" id="detailGameLogo" src="" alt="Game Logo">
@@ -810,7 +867,6 @@
             </button>
         </div>
         
-        <!-- Privacy Notice -->
         <div class="privacy-notice">
             <h3 class="privacy-title">Data Privacy Information</h3>
             <p class="privacy-text">
@@ -828,12 +884,10 @@
         </div>
     </div>
 
-    <!-- Page Content -->
     <div class="page-content" id="pageContent">
         <iframe id="pageIframe" style="width: 100%; height: 100vh; border: none; border-radius: 16px;"></iframe>
     </div>
 
-    <!-- Fullscreen Overlay -->
     <div class="fullscreen-overlay" id="fullscreenOverlay">
         <div class="fullscreen-header" id="fullscreenHeader">
             <h2 class="fullscreen-title" id="fullscreenTitle">Game Title</h2>
@@ -848,18 +902,8 @@
         </div>
     </div>
 
-  </html>
-<head>
-      <!-- 🌈 Navigation Menu -->
-<nav style="background: rgba(255,255,255,0.2); display:flex; justify-content:center; gap:1rem; padding:0.5rem 0; border-radius:50px; margin:0.8rem auto; max-width:500px; backdrop-filter:blur(10px);">
-  <a href="index.html" style="color:white; text-decoration:none; font-weight:600; padding:0.3rem 0.8rem; border-radius:25px;">Home</a>
-  <a href="about.html" style="color:white; text-decoration:none; font-weight:600; padding:0.3rem 0.8rem; border-radius:25px;">About</a>
-  <a href="contact.html" style="color:white; text-decoration:none; font-weight:600; padding:0.3rem 0.8rem; border-radius:25px;">Contact</a>
-  <a href="privacy.html" style="color:white; text-decoration:none; font-weight:600; padding:0.3rem 0.8rem; border-radius:25px;">Privacy</a>
-</nav>
-
-<footer></footer>
-            <footer style="text-align:center; padding:1rem; background:#2A2D43; color:white; font-size:0.8rem;">
+  
+<footer style="text-align:center; padding:1rem; background:#2A2D43; color:white; font-size:0.8rem;">
   <p>
     Timepass Games  © 2025 |
     <a href="about.html" style="color:#FFD166; text-decoration:none;">About</a> |
