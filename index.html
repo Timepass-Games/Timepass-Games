@@ -731,4 +731,502 @@
                 gap: 1rem;
             }
             
-            .game
+                   .game-icon-container {
+                height: 120px;
+            }
+            
+            .game-detail-logo {
+                width: 180px;
+                height: 180px;
+            }
+            
+            .game-detail-title {
+                font-size: 2rem;
+            }
+            
+            .back-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1.1rem;
+            }
+
+            .footer-links {
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .games-grid {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            }
+            
+            .game-icon-container {
+                height: 100px;
+            }
+            
+            .game-title {
+                font-size: 0.9rem;
+            }
+            
+            .game-detail-logo {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .game-detail-title {
+                font-size: 1.8rem;
+            }
+            
+            .play-now-btn {
+                padding: 0.8rem 2rem;
+                font-size: 1.1rem;
+            }
+            
+            .game-detail-description,
+            .privacy-notice,
+            .page-text {
+                padding: 1.5rem;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="bubbles"></div>
+
+    <header>
+        <div class="floating-shapes">
+            <div class="shape circle"></div>
+            <div class="shape triangle"></div>
+            <div class="shape square"></div>
+        </div>
+        <button class="back-btn" id="backBtn" style="display: none;">
+            <i class="fas fa-arrow-left"></i>
+        </button>
+        <h1>Timepass Games</h1>
+        <p class="subtitle">Discover fun and educational games for children of all ages!</p>
+        
+        <nav style="background: rgba(255,255,255,0.2); display:flex; justify-content:center; gap:1rem; padding:0.5rem 0; border-radius:50px; margin:0.8rem auto; max-width:500px; backdrop-filter:blur(10px);">
+            <a href="index.html" style="color:white; text-decoration:none; font-weight:600; padding:0.3rem 0.8rem; border-radius:25px;">Home</a>
+            <a href="about.html" style="color:white; text-decoration:none; font-weight:600; padding:0.3rem 0.8rem; border-radius:25px;">About</a>
+            <a href="contact.html" style="color:white; text-decoration:none; font-weight:600; padding:0.3rem 0.8rem; border-radius:25px;">Contact</a>
+            <a href="privacy.html" style="color:white; text-decoration:none; font-weight:600; padding:0.3rem 0.8rem; border-radius:25px;">Privacy</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        
+        <section class="seo-content-block">
+            <h2>Welcome to Timepass Games: Your Ultimate Destination for Free Online HTML5 Fun!</h2>
+            <p>
+                Tired of endless downloads, complicated installations, and frustrating software? At **Timepass Games**, we believe instant fun should be the standard. We've curated the web's best collection of free, high-quality **HTML5 games** that you can play directly in your browser. Whether you're using a desktop computer, a tablet, or a mobile phone, our games load quickly and are always **100% free** and accessible. Forget the hassles—just pure, addictive gaming pleasure starts here.
+            </p>
+            <p>
+                Our library is meticulously designed to offer something for everyone. We feature a fantastic selection of **fun games for children** that are both educational and engaging, helping young minds develop skills through play. But the fun doesn't stop there. Adults will also find plenty of challenges in our vast selection of classic **arcade games**, brain-teasing **puzzle games**, and heart-pounding **action games**. From strategy challenges that sharpen your mind to simple, relaxing games for a quick break, Timepass Games is the perfect way to pass the time and discover your next favorite online pastime.
+            </p>
+            <p>
+                We prioritize a **seamless and user-friendly experience**. Our entire platform is **mobile-friendly** and optimized for lightning-fast loading speeds, which means less waiting and more playing, regardless of your device. We are constantly updating our collection, bringing you new and exciting titles across various categories every week. Use the powerful search bar above or filter games by category to quickly find exactly what you're looking for, or simply browse the grid below to stumble upon a delightful new adventure.
+            </p>
+            <p>
+                Your privacy and safety are important to us, which is why we maintain a transparent and secure environment for all our players. We are committed to providing **reliable browser games** that you can trust. Start exploring our vast collection of free online games today and join thousands of players who make Timepass Games their go-to source for instant, high-quality online entertainment. Dive in, find a game, and let the fun begin!
+            </p>
+        </section>
+        
+        <div class="search-container">
+            <input type="text" class="search-box" id="searchInput" placeholder="Search for games...">
+            <div class="search-icon">
+                <i class="fas fa-search"></i>
+            </div>
+        </div>
+
+        <div class="category-filter" id="categoryFilter">
+            </div>
+
+        <div class="games-grid" id="gamesGrid">
+            <div class="loading">
+                <div class="loading-spinner"></div>
+                <p>Loading games...</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="game-detail-page" id="gameDetailPage">
+        <div class="game-detail-header">
+            <img class="game-detail-logo" id="detailGameLogo" src="" alt="Game Logo">
+            <h1 class="game-detail-title" id="detailGameTitle">Game Title</h1>
+            <button class="play-now-btn" id="playNowBtn">
+                <i class="fas fa-play"></i> Play Now
+            </button>
+        </div>
+        
+        <div class="privacy-notice">
+            <h3 class="privacy-title">Data Privacy Information</h3>
+            <p class="privacy-text">
+                Our games store your highscores and game progress, track your gaming behaviour and display ads based on your interests. 
+                We save an anonymous cookie so we can recognize you. Click on the play button if you agree and are at least 16 years of age.
+            </p>
+            <div class="privacy-links">
+                <a href="privacy.html" class="privacy-link">Ad Vendors & Privacy Policy</a>
+            </div>
+        </div>
+        
+        <div class="game-detail-description">
+            <h2 class="description-title">About this Game</h2>
+            <p class="description-text" id="detailGameDescription">Game description will appear here.</p>
+        </div>
+    </div>
+
+    <div class="page-content" id="pageContent">
+        <iframe id="pageIframe" style="width: 100%; height: 100vh; border: none; border-radius: 16px;"></iframe>
+    </div>
+
+    <div class="fullscreen-overlay" id="fullscreenOverlay">
+        <div class="fullscreen-header" id="fullscreenHeader">
+            <h2 class="fullscreen-title" id="fullscreenTitle">Game Title</h2>
+            <div class="fullscreen-actions">
+                <button class="fullscreen-btn" id="exitFullscreenBtn" title="Exit Fullscreen">
+                    <i class="fas fa-compress"></i>
+                </button>
+            </div>
+        </div>
+        <div class="iframe-wrapper">
+            <iframe class="game-iframe" id="fullscreenIframe" src="" allowfullscreen></iframe>
+        </div>
+    </div>
+
+  
+<footer style="text-align:center; padding:1rem; background:#2A2D43; color:white; font-size:0.8rem;">
+  <p>
+    Timepass Games  © 2025 |
+    <a href="about.html" style="color:#FFD166; text-decoration:none;">About</a> |
+    <a href="contact.html" style="color:#FFD166; text-decoration:none;">Contact</a> |
+    <a href="privacy.html" style="color:#FFD166; text-decoration:none;">Privacy</a>
+  </p>
+
+</footer>     
+<!-- ================= SEO FOOTER START ================= -->
+<section class="seo-footer-block">
+  <h2>Unblocked Games | Free Online Browser Games</h2>
+
+  <p>
+    Enjoy exciting <strong>car games unblocked</strong>,
+    <strong>unblocked racing games</strong>,
+    <strong>drift games unblocked</strong>,
+    <strong>driving games unblocked</strong> and
+    <strong>car racing games unblocked</strong> right in your browser.
+    Play <strong>car games online unblocked</strong> and
+    <strong>3d drift games unblocked</strong> without downloads and without lag.
+  </p>
+
+  <p>
+    We also offer popular titles like
+    <strong>roblox unblocked</strong>,
+    <strong>subway surfers unblocked</strong>,
+    <strong>crazy games unblocked</strong>,
+    <strong>poki games unblocked</strong>,
+    <strong>io games unblocked</strong>,
+    <strong>shooting games unblocked</strong> and
+    <strong>golf games unblocked</strong>.
+    All games are fast, smooth and fun to play on mobile and PC.
+  </p>
+
+  <p>
+    Our goal is to provide the best timepass gaming experience
+    with instant loading HTML5 browser games. Bookmark our site
+    and enjoy unlimited gaming anytime 😎
+  </p>
+</section>
+
+<style>
+.seo-footer-block{
+  background:#ffffff;
+  padding:25px;
+  margin:30px auto;
+  border-radius:14px;
+  box-shadow:0 8px 25px rgba(0,0,0,0.1);
+  max-width:1100px;
+  border-left:6px solid #FF6B8B;
+}
+.seo-footer-block h2{
+  text-align:center;
+  margin-bottom:15px;
+  color:#2A2D43;
+  font-size:24px;
+}
+.seo-footer-block p{
+  color:#333;
+  line-height:1.8;
+  margin-bottom:12px;
+  font-size:16px;
+}
+</style>
+<!-- ================= SEO FOOTER END ================= -->
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const gamesGrid = document.getElementById('gamesGrid');
+            const searchInput = document.getElementById('searchInput');
+            const categoryFilter = document.getElementById('categoryFilter');
+            const bubblesContainer = document.getElementById('bubbles');
+            const backBtn = document.getElementById('backBtn');
+            const gameDetailPage = document.getElementById('gameDetailPage');
+            const detailGameLogo = document.getElementById('detailGameLogo');
+            const detailGameTitle = document.getElementById('detailGameTitle');
+            const detailGameDescription = document.getElementById('detailGameDescription');
+            const playNowBtn = document.getElementById('playNowBtn');
+            const pageContent = document.getElementById('pageContent');
+            const pageIframe = document.getElementById('pageIframe');
+            const fullscreenOverlay = document.getElementById('fullscreenOverlay');
+            const fullscreenIframe = document.getElementById('fullscreenIframe');
+            const fullscreenTitle = document.getElementById('fullscreenTitle');
+            const exitFullscreenBtn = document.getElementById('exitFullscreenBtn');
+            
+            const csvUrl = 'https://docs.google.com/spreadsheets/d/13gXJWxoHMiKZDX-IssQJ_Nsz9gNQaWfaawYHmYagk5c/export?format=csv';
+            
+            let games = [];
+            let categories = [];
+            let selectedCategory = 'all';
+            let currentGame = null;
+            
+            // Create background bubbles
+            function createBubbles() {
+                for (let i = 0; i < 20; i++) {
+                    const bubble = document.createElement('div');
+                    bubble.classList.add('bubble');
+                    
+                    const size = Math.random() * 60 + 20;
+                    bubble.style.width = `${size}px`;
+                    bubble.style.height = `${size}px`;
+                    
+                    bubble.style.left = `${Math.random() * 100}vw`;
+                    bubble.style.animationDelay = `${Math.random() * 15}s`;
+                    bubble.style.animationDuration = `${Math.random() * 10 + 15}s`;
+                    
+                    bubblesContainer.appendChild(bubble);
+                }
+            }
+            
+            // Fetch and parse CSV data
+            async function loadGames() {
+                try {
+                    const response = await fetch(csvUrl);
+                    const csvData = await response.text();
+                    
+                    // Parse CSV (simple approach for Name,Icon,Link,Category,Description format)
+                    const lines = csvData.split('\n');
+                    
+                    // Skip header if exists and process each line
+                    for (let i = 1; i < lines.length; i++) {
+                        const line = lines[i].trim();
+                        if (!line) continue;
+                        
+                        // Simple CSV parsing (may need adjustment based on actual CSV format)
+                        const parts = line.split(',');
+                        if (parts.length >= 5) {
+                            const name = parts[0].replace(/"/g, '').trim();
+                            const icon = parts[1].replace(/"/g, '').trim();
+                            const link = parts[2].replace(/"/g, '').trim();
+                            const category = parts[3].replace(/"/g, '').trim();
+                            const description = parts[4].replace(/"/g, '').trim();
+                            
+                            if (name && link) {
+                                games.push({ name, icon, link, category, description });
+                                
+                                // Add category to categories array if not already present
+                                if (category && !categories.includes(category)) {
+                                    categories.push(category);
+                                }
+                            }
+                        }
+                    }
+                    
+                    // Sort categories alphabetically
+                    categories.sort();
+                    
+                    // Create category filter buttons
+                    createCategoryFilters();
+                    
+                    displayGames(games);
+                } catch (error) {
+                    console.error('Error loading games:', error);
+                    gamesGrid.innerHTML = '<div class="no-results">Sorry, we couldn\'t load the games. Please try again later.</div>';
+                }
+            }
+            
+            // Create category filter buttons
+            function createCategoryFilters() {
+                // Add "All" category button
+                const allButton = document.createElement('button');
+                allButton.classList.add('category-btn', 'active');
+                allButton.textContent = 'All Games';
+                allButton.setAttribute('data-category', 'all');
+                allButton.addEventListener('click', function() {
+                    selectedCategory = 'all';
+                    updateCategoryButtons();
+                    filterGames();
+                });
+                categoryFilter.appendChild(allButton);
+                
+                // Add category buttons
+                categories.forEach(category => {
+                    const button = document.createElement('button');
+                    button.classList.add('category-btn');
+                    button.textContent = category;
+                    button.setAttribute('data-category', category);
+                    button.addEventListener('click', function() {
+                        selectedCategory = category;
+                        updateCategoryButtons();
+                        filterGames();
+                    });
+                    categoryFilter.appendChild(button);
+                });
+            }
+            
+            // Update active state of category buttons
+            function updateCategoryButtons() {
+                document.querySelectorAll('.category-btn').forEach(button => {
+                    if (button.getAttribute('data-category') === selectedCategory) {
+                        button.classList.add('active');
+                    } else {
+                        button.classList.remove('active');
+                    }
+                });
+            }
+            
+            // Filter games based on search and category
+            function filterGames() {
+                const searchTerm = searchInput.value.toLowerCase();
+                
+                const filteredGames = games.filter(game => {
+                    const matchesSearch = game.name.toLowerCase().includes(searchTerm);
+                    const matchesCategory = selectedCategory === 'all' || game.category === selectedCategory;
+                    
+                    return matchesSearch && matchesCategory;
+                });
+                
+                displayGames(filteredGames);
+            }
+            
+            // Display games in grid
+            function displayGames(gamesToDisplay) {
+                if (gamesToDisplay.length === 0) {
+                    gamesGrid.innerHTML = '<div class="no-results">No games found. Try a different search or category.</div>';
+                    return;
+                }
+                
+                gamesGrid.innerHTML = gamesToDisplay.map((game, index) => `
+                    <div class="game-card" data-link="${game.link}" data-icon="${game.icon}" data-description="${game.description || 'No description available.'}" style="--delay: ${index};">
+                        <div class="game-icon-container">
+                            <img src="${game.icon || 'https://via.placeholder.com/200x160/6ECBF5/FFFFFF?text=Game'}" 
+                                 alt="${game.name}" class="game-icon" 
+                                 onerror="this.src='https://via.placeholder.com/200x160/6ECBF5/FFFFFF?text=Game'">
+                        </div>
+                        <div class="game-content">
+                            <h3 class="game-title">${game.name}</h3>
+                        </div>
+                    </div>
+                `).join('');
+                
+                // Add click event to game cards
+                document.querySelectorAll('.game-card').forEach(card => {
+                    card.addEventListener('click', function() {
+                        const link = this.getAttribute('data-link');
+                        const icon = this.getAttribute('data-icon');
+                        const title = this.querySelector('.game-title').textContent;
+                        const description = this.getAttribute('data-description');
+                        
+                        openGameDetailPage(link, icon, title, description);
+                    });
+                });
+            }
+            
+            // Open game detail page
+            function openGameDetailPage(link, icon, title, description) {
+                currentGame = { link, icon, title, description };
+                
+                // Update detail page content
+                detailGameLogo.src = icon || 'https://via.placeholder.com/200x160/6ECBF5/FFFFFF?text=Game';
+                detailGameLogo.alt = title;
+                detailGameTitle.textContent = title;
+                detailGameDescription.textContent = description || 'No description available.';
+                
+                // Show back button and detail page, hide main container
+                backBtn.style.display = 'flex';
+                document.body.classList.add('game-detail-view');
+        }
+            
+              // Close game detail page and return to main view
+            function closeGameDetailPage() {
+                backBtn.style.display = 'none';
+                document.body.classList.remove('game-detail-view');
+                currentGame = null;
+            }
+            
+            // Show external page in iframe
+            function showExternalPage(url) {
+                pageIframe.src = url;
+                backBtn.style.display = 'flex';
+                document.body.classList.add('page-view');
+            }
+            
+            // Close page and return to main view
+            function closePage() {
+                backBtn.style.display = 'none';
+                document.body.classList.remove('page-view');
+                pageIframe.src = '';
+            }
+            
+            // Enter fullscreen mode
+            function enterFullscreen() {
+                if (!currentGame) return;
+                
+                document.body.classList.add('fullscreen-mode');
+                fullscreenOverlay.classList.add('active');
+                fullscreenIframe.src = currentGame.link;
+                fullscreenTitle.textContent = currentGame.title;
+            }
+            
+            // Exit fullscreen mode
+            function exitFullscreen() {
+                document.body.classList.remove('fullscreen-mode');
+                fullscreenOverlay.classList.remove('active');
+                fullscreenIframe.src = '';
+            }
+            
+            // Event listeners
+            searchInput.addEventListener('input', filterGames);
+            
+            backBtn.addEventListener('click', function() {
+                if (document.body.classList.contains('game-detail-view')) {
+                    closeGameDetailPage();
+                } else if (document.body.classList.contains('page-view')) {
+                    closePage();
+                }
+            });
+            
+            playNowBtn.addEventListener('click', enterFullscreen);
+            
+            exitFullscreenBtn.addEventListener('click', exitFullscreen);
+            
+            // Close fullscreen with Escape key
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'Escape' && document.body.classList.contains('fullscreen-mode')) {
+                    exitFullscreen();
+                }
+            });
+            
+            // Initialize
+            createBubbles();
+            loadGames();
+        });
+    </script>
+</body>
+</html>
