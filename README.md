@@ -15,7 +15,7 @@ The calculator uses the latest exam weighting system to provide an estimated sco
 
 ## Why Use an AP World Score Calculator?
 
-Benefits include:
+Benefits include:https://sites.google.com/view/ap-exam-resources-hub/ap-scoring-system-page
 
 - Instant score estimation
 - Better exam preparation
